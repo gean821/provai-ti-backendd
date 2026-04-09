@@ -28,15 +28,17 @@ namespace Escola_ti.Application
                 ?? throw new Exception("Veiculo não encontrado.");
 
             existing.AnoFabricacao = veiculo.AnoFabricacao;
-            existing.Placa= veiculo.Placa;
+            existing.Placa = veiculo.Placa;
+            existing.Modelo = veiculo.Modelo;
 
+            await _repo.Update(existing, token);
             return existing;
         }
         public async Task Delete(
-            Veiculo veiculo,
+            Guid id,
             CancellationToken token = default)
         {
-            var existing = await _repo.FindById(veiculo.Id, token)
+            var existing = await _repo.FindById(id, token)
                ?? throw new Exception("Veiculo não encontrado.");
 
             await _repo.Delete(existing, token);

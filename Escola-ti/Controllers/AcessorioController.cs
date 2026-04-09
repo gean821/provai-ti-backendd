@@ -50,5 +50,14 @@ namespace Escola_ti.Controllers
             var acessorioAtualizado = await _service.Update(id, acessorio, token);
             return Ok(acessorioAtualizado);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(
+            [FromRoute] Guid id,
+            CancellationToken token = default)
+        {
+            await _service.Delete(id, token);
+            return NoContent();
+        } 
     }
 }

@@ -2,7 +2,7 @@
 {
     public class Veiculo
     {
-        public required Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; set; } = Guid.NewGuid();
         public required string Modelo { get; set; }
         public required int AnoFabricacao { get; set; }
         public required string Placa { get; set; }

@@ -24,7 +24,7 @@ namespace Escola_ti.Controllers
             return CreatedAtAction(
                 nameof(FindById),
                 new { id = veiculoCriado.Id },
-                veiculo);
+                veiculoCriado);
         }
 
         [HttpGet("{id}")]
@@ -52,6 +52,16 @@ namespace Escola_ti.Controllers
         {
             var veiculoAtualizado = await _service.Update(id, veiculo, token);
             return Ok(veiculoAtualizado);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(
+            [FromRoute] Guid id,
+            CancellationToken token = default
+            )
+        {
+            await _service.Delete(id, token);
+            return NoContent();
         }
     }
 }

@@ -29,14 +29,14 @@ namespace Escola_ti.Application
                 ?? throw new Exception("Acessorio não encontrado.");
 
             existing.Nome = acessorio.Nome;
-             
+            await _repo.Update(existing, token);
             return existing;
         }
         public async Task Delete(
-            Acessorio acessorio,
+            Guid id,
             CancellationToken token = default)
         {
-            var existing = await _repo.FindById(acessorio.Id, token)
+            var existing = await _repo.FindById(id, token)
                ?? throw new Exception("Acessorio não encontrado.");
 
             await _repo.Delete(existing, token);
