@@ -1,0 +1,12 @@
+services:
+  sql-server:
+    container_name: sql-server-ti
+    hostname: sql-server-ti
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    user: root
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD: Nesher#2019
+    ports:
+      - 1433:1433
